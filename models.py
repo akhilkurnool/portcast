@@ -12,9 +12,7 @@ class Paragraphs(BaseModel):
 
 class WordFrequency(BaseModel):
   word = TextField(primary_key=True)
-  frequency = IntegerField()
-
+  frequency = IntegerField(default=0)
 
 db.connect()
 db.create_tables([Paragraphs, WordFrequency])
-
