@@ -49,4 +49,4 @@ docker-compose run tests
 *Query parameters*:
   - `q` search query: comma separated list of words to be searched for. e.g `?q=word1,word2,word3`
   - `in` search operator: values can be either `or` or `and`. If `and` is used then only those paragraphs are returned where **all** the words in `q` are matched. If `or` is used then only those paragraphs are returned where **any** one of the words in `q` are present.
-- **GET* *`/dictionary` return meanings of 10 most frequent words in all the paragraphs combined
+- **GET** `/dictionary` return meanings of 10 most frequent words in all the paragraphs combined
