@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    container_name: portcast-container
+    environment:
+      PORT: 8000
+    volumes:
+      - ./:/app/
+    ports:
+      - '8000:8000'
+    restart: "no"
+  tests:
+    build: .
+    command: python -m unittest -v
+    volumes:
+      - ./:/app/
+    deploy:
+      replicas: 0
