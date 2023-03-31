@@ -25,6 +25,12 @@ cd portcase
 ```bash
 docker-compose up -d --build
 ```
+4. Stop container
+
+```bash
+docker compose down
+```
+
 
 You should be able to open `localhost:8000` in any browser and get a random paragraph. Current parameters: number of paragraphs = 1, no of sentences = 50
 
