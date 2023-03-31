@@ -1,10 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import PlainTextResponse
-from error_codes import Error
-from models import db
-from controller import update_word_freq_and_para, search_paragraphs, get_top_words_definition, Operators
-from helpers import validate_search_query
-from constants import Url, Misc
+
+from app.error_codes import Error
+from app.models import db
+from app.controller import update_word_freq_and_para, search_paragraphs, get_top_words_definition, Operators
+from app.helpers import validate_search_query
+from app.constants import Url, Misc
 
 import requests
 

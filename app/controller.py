@@ -1,17 +1,20 @@
-from helpers import word_count, dict_to_tuple, word_set
-from models import WordFrequency, Paragraphs, db
 from peewee import EXCLUDED
-from constants import Url, Operators
+
+from app.helpers import word_count, dict_to_tuple, word_set
+from app.models import WordFrequency, Paragraphs, db
+from app.constants import Url, Operators
 
 import requests
 import concurrent.futures
 
-def update_word_freq_and_para(paragraph):
+def update_word_freq_and_para(paragraph, db_instance=None):
+  if not db_instance:
+    db_instance = db
   count = word_count(paragraph)
   word_frequencies_tuple = dict_to_tuple(count)
   query = WordFrequency.insert_many(word_frequencies_tuple, fields=[WordFrequency.word, WordFrequency.frequency])
   paragraph = Paragraphs(paragraph=paragraph)
-  with db.atomic():
+  with db_instance.atomic():
     query.on_conflict(
       conflict_target=WordFrequency.word,
       preserve=WordFrequency.frequency,

@@ -1,6 +1,8 @@
 from peewee import SqliteDatabase, Model, AutoField, TextField, IntegerField
+import os
 
-db = SqliteDatabase('portcast.db')
+database_url = os.getenv('DATABASE_URL', 'portcast.db')
+db = SqliteDatabase(database_url)
 
 class BaseModel(Model):
   class Meta:

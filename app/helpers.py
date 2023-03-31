@@ -28,6 +28,8 @@ def dict_to_tuple(dict):
   return [(k,v) for k,v in dict.items()]
 
 def validate_search_query(q):
+  if not q:
+    return False
   for word in q:
     if word == '': return False
   return True
